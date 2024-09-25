@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Item List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>File</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in item %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.desc }}</td>
+                <td>{{ i.category }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.quant }}</td>
+                <td>{{ i.img }}</td>
+                <td>{{ i.doc }}</td>
+                <td>
+                    <form action="{% url 'delt' i.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <a href="{% url 'editt' i.pk %}">Edit</a>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_OvTWw4rRm9dqzt" async> </script> </form>
+
+</body>
+</html>
